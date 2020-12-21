@@ -138,5 +138,6 @@ dmypy.json
 cython_debug/
 
 # Config
+src/config.yaml
 config.yaml
 .vscode/
