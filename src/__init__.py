@@ -14,6 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from .bot import Wrenchboat, get_extensions, get_pre, mentions, intents
+from .bot import Wrenchboat
 from .logger import setup_logging
 from .plugin import Plugin

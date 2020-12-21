@@ -1,3 +1,3 @@
 import os
 
-os.system('pipenv run python src/__main__.py')
+os.system("pipenv run python -m src")
