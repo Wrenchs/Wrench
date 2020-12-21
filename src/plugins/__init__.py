@@ -13,13 +13,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-
-import yaml
-
-
-def config():
-    with open("src/config.yaml", "r") as f:
-        loaded = yaml.load(f.read(), Loader=yaml.FullLoader)
-        locals().update(loaded)
-
-    return loaded

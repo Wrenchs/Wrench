@@ -34,8 +34,8 @@ def get_extensions():
     found = ["jishaku"]
     base = pathlib.Path("./src/plugins")
 
-    for path in base.glob("*/__init_.py"):
-        found.append(str(path.parent).replace("/", "."))
+    for path in base.glob("*/__init__.py"):
+        found.append(str(path.parent).replace("\\", "."))
 
     return found
 
@@ -92,12 +92,13 @@ class Wrenchboat(commands.Bot):
             intents=intents(),
             allowed_mentions=mentions(),
             shard_id=0,
-            shard_count=1
+            shard_count=1,
         )
 
         self.pool = None
         self.session = None
         self.redis = None
+        self.config = config
 
     async def start(self):
         self.session = start_session(self)

@@ -14,12 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import yaml
+
+from ... import Plugin
+import logging
+
+log = logging.getLogger(__name__)
 
 
-def config():
-    with open("src/config.yaml", "r") as f:
-        loaded = yaml.load(f.read(), Loader=yaml.FullLoader)
-        locals().update(loaded)
+class Guild(Plugin):
+    @Plugin.listener("on_guild_join")
+    async def on_guild_join(self, guild):
 
-    return loaded
+        log.info(f"Gained a guild. [{guild} ({guild.id})]")
+
+    @Plugin.listener("on_guild_remove")
+    async def on_guild_remove(self, guild):
+
+        log.info(f"Lost a guild. [{guild} ({guild.id})]")

@@ -14,12 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import yaml
+from .guild import Guild
 
 
-def config():
-    with open("src/config.yaml", "r") as f:
-        loaded = yaml.load(f.read(), Loader=yaml.FullLoader)
-        locals().update(loaded)
-
-    return loaded
+def setup(wrenchboat):
+    for cls in Guild:
+        wrenchboat.add_cog(cls(wrenchboat))
