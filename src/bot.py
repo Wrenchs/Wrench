@@ -12,9 +12,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
-
-Logging taken from https://github.com/mouseyapp/bot/blob/cheese/src/logging.py
 """
 
 import pathlib
@@ -109,7 +106,7 @@ class Wrenchboat(commands.Bot):
             self.load_extension(name)
 
         await super().start(config["token"])
-        
+
     async def process_commands(self, message):
 
         ctx = await self.get_context(message, cls=commands.Context)
