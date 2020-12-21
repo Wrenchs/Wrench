@@ -14,11 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import discord
-
-from . import Wrenchboat, setup_logging
-
-discord.VoiceClient.warn_nacl = False
-
-with setup_logging():
-    Wrenchboat().run()
+from .bot import Wrenchboat, get_extensions, get_pre, mentions, intents
+from .logger import setup_logging
+from .plugin import Plugin
