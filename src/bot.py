@@ -21,6 +21,7 @@ import discord
 from discord.ext import commands
 
 from .config import config
+from .sql import init_db
 
 
 config = config()
@@ -102,6 +103,7 @@ class Wrenchboat(commands.Bot):
 
     async def start(self):
         self.session = start_session(self)
+        self.pool = await init_db(db_config=config['db_config'],size=150)
 
         for name in get_extensions():
             self.load_extension(name)

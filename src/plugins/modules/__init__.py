@@ -19,3 +19,4 @@ from .admin import Admin
 def setup(wrenchboat):
     for cls in (Admin,):
         wrenchboat.add_cog(cls(wrenchboat))
+        

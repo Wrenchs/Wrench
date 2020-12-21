@@ -15,6 +15,7 @@ limitations under the License.
 """
 
 import logging
+import typing
 
 import discord
 from discord.ext import commands
@@ -38,3 +39,23 @@ class Admin(Plugin):
             log.exception(f"There was an error in \"{ctx.command}\" command.",exc_info=error)
 
         await ctx.send(f"I have purged **{len(purged)}** messages!")
+    
+    @commands.command(name="vckick",brief="Clear a voice channel or kick a user from a voice channel.")
+    @commands.has_permissions(manage_channels=True)
+    @commands.bot_has_permissions(manage_channels=True)    
+    async def _vckick(self,ctx,to_kick:typing.Union[discord.Member,discord.VoiceChannel],*,reason=None):
+        
+        if type(to_kick) == discord.Member and to_kick.voice.channel:
+            try:
+                await to_kick.move_to(channel=None,reason=reason)
+            except Exception as error:
+                log.exception(f"There was an error in \"{ctx.command}\" command.",exc_info=error)
+
+        elif type(to_kick) == discord.VoiceChannel and to_kick.members:
+            try:
+                for x in to_kick.members:
+                    await x.move_to(channel=None,reason=reason)
+            except Exception as error:
+                log.exception(f"There was an error in \"{ctx.command}\" command.",exc_info=error)
+        
+        await ctx.send(":ok_hand:")
