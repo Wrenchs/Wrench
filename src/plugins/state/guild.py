@@ -15,8 +15,9 @@ limitations under the License.
 """
 
 
-from ... import Plugin
 import logging
+
+from ... import Plugin
 
 log = logging.getLogger(__name__)
 

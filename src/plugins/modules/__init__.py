@@ -14,9 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from .guild import Guild
-
+from .admin import Admin
 
 def setup(wrenchboat):
-    for cls in (Guild,):
+    for cls in (Admin,):
         wrenchboat.add_cog(cls(wrenchboat))
