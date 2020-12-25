@@ -15,8 +15,8 @@ limitations under the License.
 """
 
 from .admin import Admin
+from .help import Help
 
 def setup(wrenchboat):
-    for cls in (Admin,):
+    for cls in (Admin,Help):
         wrenchboat.add_cog(cls(wrenchboat))
-        
