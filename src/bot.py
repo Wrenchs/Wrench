@@ -89,7 +89,6 @@ class Wrenchboat(commands.Bot):
             description="an easy to use bot for managing servers of any size.\n:warning: Errors are meant to be like that and im not being lazy :)",
             reconnect=True,
             status=discord.Status.online,
-            activity=discord.Game("with my wrench"),
             intents=intents(),
             allowed_mentions=mentions(),
             shard_id=0,
@@ -100,10 +99,11 @@ class Wrenchboat(commands.Bot):
         self.session = None
         self.redis = None
         self.config = config
+        self.remove_command("help")
 
     async def start(self):
         self.session = start_session(self)
-        self.pool = await init_db(db_config=config['db_config'],size=150)
+        self.pool = await init_db(db_config=config["db_config"], size=150)
 
         for name in get_extensions():
             self.load_extension(name)
