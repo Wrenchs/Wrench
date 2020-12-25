@@ -44,7 +44,7 @@ class HelpCommand(commands.MinimalHelpCommand):
             cog = self.context.bot.get_cog(x)
             list.append((cog.qualified_name,f"{cog.description}\n" + ' '.join([f"`{x.name}`" for x in cog.get_commands()])))
 
-        source = FieldPageSource(list,per_page=8)
+        source = FieldPageSource(list,per_page=6)
         source.embed.colour = discord.Color.blurple()
         try:
             await RoboPages(source).start(self.context)
@@ -54,7 +54,7 @@ class HelpCommand(commands.MinimalHelpCommand):
 
     async def send_command_help(self, command):
 
-        embed = discord.Embed(color=discord.Color.blurple(),description=command.brief)
+        embed = discord.Embed(color=discord.Color.blurple(),description=command.description)
         embed.set_author(name=f"{command.qualified_name} {' '.join([f'<{command.clean_params[x].name}>' for x in command.clean_params])}")
 
         await self.context.send(embed=embed)

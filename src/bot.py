@@ -23,12 +23,11 @@ from discord.ext import commands
 from .config import config
 from .sql import init_db
 
-
 config = config()
 
 
 def get_extensions():
-
+ 
     if config.get("plugins"):
         return config["plugins"]
 

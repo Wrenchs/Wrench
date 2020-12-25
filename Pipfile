@@ -33,6 +33,8 @@ gtrans = "*"
 textblob = "*"
 pytest = "*"
 discord-ext-menus = {git = "https://github.com/Rapptz/discord-ext-menus"}
+python-dateutil = "*"
+parsedatetime = "*"
 
 [requires]
 python_version = "3.8"
