@@ -14,11 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from .admin import Admin
-from .help import Help
-from .meta import Meta
-from .mod import Mod
+from . import admin,help,meta,mod
 
 def setup(wrenchboat):
-    for cls in (Admin,Help,Meta,Mod):
+    for cls in (admin.Admin,help.Help,meta.Meta,mod.Mod):
         wrenchboat.add_cog(cls(wrenchboat))
